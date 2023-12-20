@@ -11,6 +11,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import Link from "next/link";
+import { useState } from "react";
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -27,6 +28,7 @@ const item = {
 };
 
 export default function Home() {
+  const [number, setNumber] = useState(0);
   return (
     <>
       <motion.div
@@ -110,6 +112,21 @@ export default function Home() {
         <div className="mt-8 mb-8 flex">
           <div className="ml-4 mr-4">
             <span className="text-2xl font-bold">WIP</span>
+            <br />
+            <span className="text-medium font-bold">
+              C/C++/C#/Java/Javascript/Python
+            </span>
+            <br />
+            <button
+              onClick={() => {
+                setNumber(number + 1);
+              }}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              CountButton
+            </button>
+            <br />
+            {number}
           </div>
         </div>
       </motion.div>
