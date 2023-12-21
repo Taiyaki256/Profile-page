@@ -10,6 +10,7 @@ import {
   FaTwitter,
   FaGithub,
 } from "react-icons/fa";
+import { FiAlertCircle } from "react-icons/fi";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -111,7 +112,10 @@ export default function Home() {
       >
         <div className="mt-8 mb-8 flex">
           <div className="ml-4 mr-4">
-            <span className="text-2xl font-bold">WIP</span>
+            <span className="text-2xl font-bold flex flex-row">
+              <FiAlertCircle className="pt-1" />
+              WIP
+            </span>
             <br />
             <span className="text-medium font-bold">
               C/C++/C#/Java/Javascript/Python
