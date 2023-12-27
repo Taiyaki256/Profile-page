@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import {
-  FaLocationArrow,
-  FaUserGraduate,
-  FaTwitter,
-  FaGithub,
-} from "react-icons/fa";
+import { FaLocationArrow, FaSchool, FaTwitter, FaGithub } from "react-icons/fa";
 import { FiAlertCircle } from "react-icons/fi";
 import Link from "next/link";
 import { useState } from "react";
@@ -19,7 +14,7 @@ const container = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.2, staggerChildren: 0.3 },
+    transition: { duration: 0.8, ease: "easeInOut", staggerChildren: 0.4 },
   },
 };
 
@@ -65,7 +60,10 @@ export default function Home() {
                 className="p-0 inline-block"
               >
                 <div className="p-2 h-full">
-                  <FaTwitter className={cn("inline-block mr-2 ml-1")} />
+                  <FaTwitter
+                    color={"#1DA1F2"}
+                    className={cn("inline-block mr-2 ml-1")}
+                  />
                   <span className="mr-2 mt-8 h-full">Twitter</span>
                 </div>
               </Link>
@@ -97,7 +95,7 @@ export default function Home() {
         </div>
         <div className={cn("px-4 pb-2 pt-1")}>
           <p className={cn("text-sm")}>
-            <FaUserGraduate className={cn("inline-block mr-2")} />
+            <FaSchool className={cn("inline-block mr-2")} />
             <span className={cn("inline-block font-normal")}>NITTC Tokyo</span>
           </p>
         </div>
@@ -106,7 +104,7 @@ export default function Home() {
         className={cn(
           "mt-4 rounded-xl border bg-card text-card-foreground shadow w-full h-full box-border"
         )}
-        variants={container}
+        variants={item}
         initial="hidden"
         animate="show"
       >
