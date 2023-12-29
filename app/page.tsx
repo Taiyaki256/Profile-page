@@ -174,21 +174,32 @@ export default function Home() {
         className={cn(
           "mt-4 rounded-xl border bg-card text-card-foreground shadow w-full h-full box-border"
         )}
-        variants={item}
+        variants={container}
         initial="hidden"
         animate="show"
       >
         <div className="mt-4 mb-8 flex">
           <div className="ml-4 mr-4">
-            <span className="text-2xl font-bold flex flex-row">About Me</span>
-            <span className="text-lg font-semibold flex flex-row">Age</span>
-            {getAge()}
-            <span className="text-lg font-semibold flex flex-row">
-              Birthday
-            </span>
-            2006/09/22
-            <span className="text-lg font-semibold flex flex-row">Skill</span>
-            C/C++/C#/Java/Javascript/Python
+            <motion.span
+              variants={item}
+              className="text-2xl font-bold flex flex-row"
+            >
+              About Me
+            </motion.span>
+            <motion.div variants={item} className="">
+              <span className="text-lg font-semibold flex flex-row">Age</span>
+              {getAge()}
+            </motion.div>
+            <motion.div variants={item} className="">
+              <span className="text-lg font-semibold flex flex-row">
+                Birthday
+              </span>
+              2006/09/22
+            </motion.div>
+            <motion.div variants={item} className="">
+              <span className="text-lg font-semibold flex flex-row">Skill</span>
+              C/C++/C#/Java/Javascript/Python
+            </motion.div>
             <br />
             <br />
           </div>
