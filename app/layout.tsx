@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-
+import { ThemeProvider } from "@/components/themeProvider";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
@@ -24,11 +24,18 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased p-10 w-full h-full",
+          "min-h-screen bg-background font-sans antialiased p-10 w-full h-full p-auto",
           fontSans.variable
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
