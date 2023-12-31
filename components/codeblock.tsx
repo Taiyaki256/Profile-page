@@ -272,6 +272,7 @@ const codingSeq: [number, string, string][] = [
   [261, ";", ""],
   [262, " ", ""],
 ];
+// 参考 https://qiita.com/kob58im/items/f6a0cdfa4de1308e5431
 import hljs from "highlight.js/lib/core";
 hljs.registerLanguage("c", require("highlight.js/lib/languages/c"));
 type Props = {
