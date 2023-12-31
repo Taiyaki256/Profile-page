@@ -1,12 +1,11 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { FaLocationArrow, FaSchool, FaTwitter, FaGithub } from "react-icons/fa";
-import { FiAlertCircle } from "react-icons/fi";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { useTheme } from "next-themes";
 import {
@@ -21,6 +20,16 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+
+import hljs from "highlight.js/lib/core";
+hljs.registerLanguage("c", require("highlight.js/lib/languages/c"));
+import "highlight.js/styles/github.css";
+import useInterval from "@/components/useInterval";
+import { set } from "date-fns";
+
+type Props = {
+  code: string;
+};
 
 const container = {
   hidden: { opacity: 0, y: 10 },
@@ -55,10 +64,115 @@ function getAge() {
   return age;
 }
 
+const codingSeq: [number, string, string][] = [
+  [0, "i", ""],
+  [1, "n", ""],
+  [2, "t", ""],
+  [3, " ", ""],
+  [4, "m", ""],
+  [5, "a", ""],
+  [6, "i", ""],
+  [7, "n", ""],
+  [8, "(", ""],
+  [9, ")", ""],
+  [10, "{", ""],
+  [11, "}", ""],
+  [11, "\n", ""],
+  [12, "\n", ""],
+  [12, "\t", ""],
+  [13, "p", ""],
+  [14, "r", ""],
+  [15, "i", ""],
+  [16, "n", ""],
+  [17, "t", ""],
+  [18, "f", ""],
+  [19, "(", ""],
+  [20, ")", ""],
+  [21, ";", ""],
+  [20, '"', ""],
+  [21, '"', ""],
+  [21, "H", ""],
+  [22, "e", ""],
+  [23, "l", ""],
+  [24, "l", ""],
+  [25, "o", ""],
+  [26, ",", ""],
+  [27, " ", ""],
+  [28, "W", ""],
+  [29, "o", ""],
+  [30, "r", ""],
+  [31, "l", ""],
+  [32, "d", ""],
+  [33, "!", ""],
+  [39, "\n", ""],
+];
+
+function CodeBlock(props: Props) {
+  const highlightedCode: string = hljs.highlight(props.code, {
+    language: "c",
+  }).value;
+
+  return (
+    <pre>
+      <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+    </pre>
+  );
+}
+let curSeek = 0;
+let nextSeek = 0;
+
 export default function Home() {
-  const [number, setNumber] = useState(0);
   const { setTheme } = useTheme();
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [codeStr, setCodeStr] = useState("");
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  useEffect(() => {
+    console.log("Element is in view: ", isInView);
+  }, [isInView]);
+  useInterval(
+    () => {
+      console.log("interval");
+      updateCode();
+    },
+    isInView ? 200 : null
+  );
+
+  function updateCode() {
+    console.log("update");
+    console.log(codeStr);
+    nextSeek++;
+    if (nextSeek >= codingSeq.length) {
+      nextSeek--;
+    }
+    if (nextSeek >= curSeek) {
+      for (let i = curSeek; i < nextSeek; i++) {
+        addCode(codingSeq[i]);
+      }
+    } else {
+      for (let i = curSeek - 1; i >= nextSeek; i--) {
+        undoCode(codingSeq[i]);
+      }
+    }
+    curSeek = nextSeek;
+  }
+
+  function addCode(diffCode: [number, string, string]) {
+    let si = diffCode[0];
+    let addStr = diffCode[1];
+    let delN = diffCode[2].length;
+    setCodeStr(
+      codeStr.substring(0, si) + addStr + codeStr.substring(si + delN)
+    );
+  }
+
+  function undoCode(diffCode: [number, string, string]) {
+    let si = diffCode[0];
+    let addedN = diffCode[1].length;
+    let deletedStr = diffCode[2];
+    setCodeStr(
+      codeStr.substring(0, si) + deletedStr + codeStr.substring(si + addedN)
+    );
+  }
   return (
     <>
       <div className="flex flex-row w-full h-full flex-wrap">
@@ -172,7 +286,7 @@ export default function Home() {
       </div>
       <motion.div
         className={cn(
-          "mt-4 rounded-xl border bg-card text-card-foreground shadow w-full h-full box-border"
+          "mt-4 mb-4 rounded-xl border bg-card text-card-foreground shadow w-full h-full box-border"
         )}
         variants={container}
         initial="hidden"
@@ -203,6 +317,14 @@ export default function Home() {
             <br />
             <br />
           </div>
+        </div>
+      </motion.div>
+      <motion.div
+        ref={ref}
+        className="mb-4 mt-8 rounded-xl border bg-card text-card-foreground shadow max-w-xl h-full box-border"
+      >
+        <div className="m-4">
+          <CodeBlock code={codeStr} />
         </div>
       </motion.div>
     </>

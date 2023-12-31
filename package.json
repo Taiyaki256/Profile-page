@@ -19,6 +19,7 @@
     "clsx": "^2.0.0",
     "date-fns": "^3.0.6",
     "framer-motion": "^10.16.16",
+    "highlight.js": "^11.9.0",
     "lucide-react": "^0.298.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
@@ -26,6 +27,7 @@
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
+    "react-intersection-observer": "^9.5.3",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7"
   },
