@@ -23,9 +23,9 @@ import {
 
 import hljs from "highlight.js/lib/core";
 hljs.registerLanguage("c", require("highlight.js/lib/languages/c"));
-import "highlight.js/styles/github.css";
 import useInterval from "@/components/useInterval";
-import { set } from "date-fns";
+
+import "@/styles/highlight.scss";
 
 type Props = {
   code: string;
@@ -321,7 +321,7 @@ export default function Home() {
       </motion.div>
       <motion.div
         ref={ref}
-        className="mb-4 mt-8 rounded-xl border bg-card text-card-foreground shadow max-w-xl h-full box-border"
+        className="mb-4 mt-8 rounded-xl border bg-card text-card-foreground shadow h-full box-border"
       >
         <div className="m-4">
           <CodeBlock code={codeStr} />
