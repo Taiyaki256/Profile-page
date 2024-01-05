@@ -3,7 +3,13 @@ import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { FaLocationArrow, FaSchool, FaTwitter, FaGithub } from "react-icons/fa";
+import {
+  FaLocationArrow,
+  FaSchool,
+  FaTwitter,
+  FaGithub,
+  FaBook,
+} from "react-icons/fa";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
@@ -141,69 +147,77 @@ export default function Home() {
                 </HoverCard>
               </span>
             </div>
-            <div className="flex ml-auto mt-auto h-full">
-              <motion.div
-                variants={item}
-                className={cn(
-                  "inline-block justify-end items-end mr-2 bg-card text-card-foreground"
-                )}
-              >
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="icon">
-                      <IoSunnyOutline className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                      <IoMoonOutline className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                      <span className="sr-only">Toggle theme</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={() => setTheme("light")}>
-                      Light
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setTheme("dark")}>
-                      Dark
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setTheme("system")}>
-                      System
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </motion.div>
-              <motion.div
-                variants={item}
-                className={cn(
-                  "inline-block justify-end items-end mr-2 mb-2 rounded-xl border bg-card text-card-foreground shadow"
-                )}
-              >
-                <Link
-                  href="https://twitter.com/tr_taiyaki"
-                  className="p-0 inline-block"
-                >
-                  <div className="p-2 h-full">
-                    <FaTwitter
-                      color={"#1DA1F2"}
-                      className={cn("inline-block mr-2 ml-1")}
-                    />
-                    <span className="mr-2 mt-8 h-full">Twitter</span>
-                  </div>
+            <div className="flex ml-auto mt-auto h-full flex-col">
+              <div className="p-2 inline-block justify-end items-end ml-auto mr-4 mb-2 rounded-xl border bg-card text-card-foreground shadow">
+                <Link href="https://blog.taiyaki.cc">
+                  <FaBook className={cn("inline-block mr-2 ml-1")} />
+                  <span className="mt-8 h-full">Blog</span>
                 </Link>
-              </motion.div>
-              <motion.div
-                variants={item}
-                className={cn(
-                  "inline-block justify-end items-end mr-4 mb-2 rounded-xl border bg-card text-card-foreground shadow"
-                )}
-              >
-                <Link
-                  href="https://github.com/Taiyaki256"
-                  className="p-0 inline-block"
+              </div>
+              <div className="flex h-full">
+                <motion.div
+                  variants={item}
+                  className={cn(
+                    "inline-block justify-end items-end mr-2 bg-card text-card-foreground"
+                  )}
                 >
-                  <div className="p-2 h-full">
-                    <FaGithub className={cn("inline-block mr-2 ml-1")} />
-                    <span className="mr-2 mt-8 h-full">Github</span>
-                  </div>
-                </Link>
-              </motion.div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <IoSunnyOutline className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <IoMoonOutline className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                        <span className="sr-only">Toggle theme</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => setTheme("light")}>
+                        Light
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setTheme("dark")}>
+                        Dark
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setTheme("system")}>
+                        System
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </motion.div>
+                <motion.div
+                  variants={item}
+                  className={cn(
+                    "inline-block justify-end items-end mr-2 mb-2 rounded-xl border bg-card text-card-foreground shadow"
+                  )}
+                >
+                  <Link
+                    href="https://twitter.com/tr_taiyaki"
+                    className="p-0 inline-block"
+                  >
+                    <div className="p-2 h-full">
+                      <FaTwitter
+                        color={"#1DA1F2"}
+                        className={cn("inline-block mr-2 ml-1")}
+                      />
+                      <span className="mr-2 mt-8 h-full">Twitter</span>
+                    </div>
+                  </Link>
+                </motion.div>
+                <motion.div
+                  variants={item}
+                  className={cn(
+                    "inline-block justify-end items-end mr-4 mb-2 rounded-xl border bg-card text-card-foreground shadow"
+                  )}
+                >
+                  <Link
+                    href="https://github.com/Taiyaki256"
+                    className="p-0 inline-block"
+                  >
+                    <div className="p-2 h-full">
+                      <FaGithub className={cn("inline-block mr-2 ml-1")} />
+                      <span className="mr-2 mt-8 h-full">Github</span>
+                    </div>
+                  </Link>
+                </motion.div>
+              </div>
             </div>
           </div>
           <Separator />
