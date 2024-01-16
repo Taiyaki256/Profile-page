@@ -23,8 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="light">
-      <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-      <link rel="icon" type="image/png" href="favicon.png" />
+      <link rel="icon" type="image/png" href="favicon.ico" />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased p-10 w-full h-full p-auto",

@@ -32,6 +32,13 @@ import useInterval from "@/components/useInterval";
 import "@/styles/highlight.scss";
 import CodeBlock, { codingSeq } from "@/components/codeblock";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const container = {
   hidden: { opacity: 0, y: 10 },
   show: {
@@ -148,12 +155,15 @@ export default function Home() {
               </span>
             </div>
             <div className="flex ml-auto mt-auto h-full flex-col">
-              <div className="p-2 inline-block justify-end items-end ml-auto mr-4 mb-2 rounded-xl border bg-card text-card-foreground shadow">
+              <motion.div
+                variants={item}
+                className="p-2 inline-block justify-end items-end ml-auto mr-4 mb-2 rounded-xl border bg-card text-card-foreground shadow"
+              >
                 <Link href="https://blog.taiyaki.cc">
                   <FaBook className={cn("inline-block mr-2 ml-1")} />
                   <span className="mt-8 h-full">Blog</span>
                 </Link>
-              </div>
+              </motion.div>
               <div className="flex h-full">
                 <motion.div
                   variants={item}
@@ -256,20 +266,47 @@ export default function Home() {
               About Me
             </motion.span>
             <motion.div variants={item} className="">
-              <span className="text-lg font-semibold flex flex-row">Age</span>
+              <span className="text-xl font-semibold flex flex-row">Age</span>
               {getAge()}
             </motion.div>
             <motion.div variants={item} className="">
-              <span className="text-lg font-semibold flex flex-row">
+              <span className="text-xl font-semibold flex flex-row">
                 Birthday
               </span>
               2006/09/22
             </motion.div>
             <motion.div variants={item} className="">
-              <span className="text-lg font-semibold flex flex-row">Skill</span>
+              <span className="text-xl font-semibold flex flex-row">Skill</span>
               C/C++/C#/Java/Javascript/Python
             </motion.div>
-            <br />
+            <motion.div variants={item} className="">
+              <span className="text-xl font-semibold flex flex-row">
+                Robocon
+              </span>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="1">
+                  <AccordionTrigger className="text-base font-normal">
+                    2023 関東春ロボ 「サンタのおつかい」 ピットクルー
+                  </AccordionTrigger>
+                  <AccordionContent>W.I.P.</AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="2">
+                  <AccordionTrigger className="text-base font-normal">
+                    2023 NHKロボコン 東京B 「S∅PNiR」 ピットクルー
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    「S∅PNiR」は上下で機構が分かれる機体のため、回路的にも分離させる必要があり、
+                    <br />
+                    Raspi4を上下一台ずつ載せwifiルーターを介してROS2トピックで通信し、
+                    <br />
+                    スマホコントローラーで操作するという構成になっています。
+                    <br />
+                    <br />
+                    Raspi関係、スマホコントローラー用アプリ関係のプログラムを担当しました。
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </motion.div>
             <br />
           </div>
         </div>
