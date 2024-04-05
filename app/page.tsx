@@ -263,7 +263,7 @@ export default function Home() {
               variants={item}
               className="text-2xl font-bold flex flex-row"
             >
-              About Me
+              About Me!
             </motion.span>
             <motion.div variants={item} className="">
               <span className="text-xl font-semibold flex flex-row">Age</span>
