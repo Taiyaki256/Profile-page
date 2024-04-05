@@ -277,7 +277,7 @@ export default function Home() {
             </motion.div>
             <motion.div variants={item} className="">
               <span className="text-xl font-semibold flex flex-row">Skill</span>
-              C/C++/C#/Java/Javascript/Python
+              C++/C#(Unity)/Java/Javascript/Python
             </motion.div>
             <motion.div variants={item} className="">
               <span className="text-xl font-semibold flex flex-row">
