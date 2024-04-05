@@ -301,6 +301,7 @@ export default function Home() {
                     <br />
                     スマホコントローラーで操作するという構成になっています。
                     <br />
+                    スマホコントローラーはUnityを用いて自作しました。
                     <br />
                     Raspi関係、スマホコントローラー用アプリ関係のプログラムを担当しました。
                   </AccordionContent>
