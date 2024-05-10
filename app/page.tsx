@@ -141,7 +141,10 @@ export default function Home() {
           <div className="flex flex-row w-full h-full flex-wrap">
             <div>
               <Avatar className="ml-4 mt-4 pointer-events-none w-40 h-40">
-                <AvatarImage src="https://github.com/Taiyaki256.png" />
+                <AvatarImage
+                  src="https://github.com/Taiyaki256.png"
+                  alt="avatar"
+                />
                 <AvatarFallback>Taiyaki</AvatarFallback>
               </Avatar>
               <span className={cn("text-3xl font-bold ml-6 mt-2 flex")}>
