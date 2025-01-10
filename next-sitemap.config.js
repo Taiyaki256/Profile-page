@@ -4,7 +4,8 @@ module.exports = {
     siteUrl: 'https://taiyaki.cc',
     outDir: './out',
     generateRobotsTxt: true,
-    sitemapSize: 7000,
+    generateIndexSitemap: false,
+    // sitemapBaseFileName: 'smap',
     robotsTxtOptions: {
         additionalSitemaps: [
           'https://blog.taiyaki.cc/sitemap.xml',
