@@ -1,11 +1,28 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 export default function Home() {
   return (
     <main className="container mx-auto px-4 pt-24">
-      <section className="flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+      <motion.section
+        className="flex flex-col md:flex-row items-center justify-center text-center md:text-left"
+        initial="hidden"
+        animate="visible"
+        variants={sectionVariants}
+      >
         <div className="md:w-1/2">
           <h1 className="text-5xl md:text-7xl font-bold">
             Hi, I&apos;m Taiyaki.
@@ -23,9 +40,15 @@ export default function Home() {
             className="rounded-full"
           />
         </div>
-      </section>
+      </motion.section>
 
-      <section className="mt-24">
+      <motion.section
+        className="mt-24"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={sectionVariants}
+      >
         <h2 className="text-3xl font-bold text-center">About Me</h2>
         <div className="max-w-2xl mx-auto mt-8 text-lg text-gray-600 dark:text-gray-300">
           <p>
@@ -34,9 +57,15 @@ export default function Home() {
             technologies.
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="mt-24">
+      <motion.section
+        className="mt-24"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={sectionVariants}
+      >
         <h2 className="text-3xl font-bold text-center">
           Skills &amp; Participations
         </h2>
@@ -52,7 +81,7 @@ export default function Home() {
             <li>2023 Kanto Spring Robot Contest (Pit Crew)</li>
           </ul>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }

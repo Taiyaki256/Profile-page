@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { ThemeProvider } from "@/components/themeProvider";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import "./globals.scss";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -37,8 +38,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-            <Header />
-          {children}
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
         </ThemeProvider>
         <SpeedInsights />
       </body>
