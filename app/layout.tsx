@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { ThemeProvider } from "@/components/themeProvider";
+import Header from "@/components/header";
 import "./globals.scss";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+            <Header />
           {children}
         </ThemeProvider>
         <SpeedInsights />
