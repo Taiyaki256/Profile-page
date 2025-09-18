@@ -1,9 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
+import { IoSunnyOutline, IoMoonOutline, IoMenu } from "react-icons/io5";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
@@ -34,6 +40,33 @@ export default function Header() {
               <IoMoonOutline className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
+            <div className="md:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline">
+                    <IoMenu className="h-[1.2rem] w-[1.2rem]" />
+                    <span className="sr-only">Open menu</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="/" className="w-full">
+                      Home
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/about" className="w-full">
+                      About
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/portfolio" className="w-full">
+                      Portfolio
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </div>
